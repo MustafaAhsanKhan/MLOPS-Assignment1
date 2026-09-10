@@ -17,6 +17,20 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Application code changes most often, so it is copied last
 COPY VERSION app.py ./
 
+# OCI metadata so every image can be traced back to its source commit.
+# Declared after the pip layer: per-build values such as BUILD_DATE would
+# otherwise invalidate the dependency cache on every release.
+ARG APP_VERSION=dev
+ARG GIT_COMMIT=unknown
+ARG BUILD_DATE=unknown
+ARG REPOSITORY_URL=unknown
+LABEL org.opencontainers.image.title="student-ml-api" \
+      org.opencontainers.image.description="Prediction API for the MLOps CI/CD exercise" \
+      org.opencontainers.image.version="${APP_VERSION}" \
+      org.opencontainers.image.revision="${GIT_COMMIT}" \
+      org.opencontainers.image.source="${REPOSITORY_URL}" \
+      org.opencontainers.image.created="${BUILD_DATE}"
+
 USER appuser
 
 EXPOSE 5000
