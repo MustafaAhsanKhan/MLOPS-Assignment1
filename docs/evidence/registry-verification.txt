@@ -1,0 +1,21 @@
+$ curl -s -H "Authorization: Bearer <anonymous pull token>" https://ghcr.io/v2/mustafaahsankhan/student-ml-api/tags/list
+{
+    "name": "mustafaahsankhan/student-ml-api",
+    "tags": [
+        "1.0.0",
+        "95c63a7",
+        "latest",
+        "1.1.0",
+        "a1aa4d3"
+    ]
+}
+
+$ docker buildx imagetools inspect ghcr.io/mustafaahsankhan/student-ml-api:<tag>   (digest per tag)
+1.0.0    sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013
+95c63a7  sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013
+1.1.0    sha256:a38679a1ad792e71e4d6cf74195671b711f82c95ec8d4687768e729829e63ea0
+a1aa4d3  sha256:a38679a1ad792e71e4d6cf74195671b711f82c95ec8d4687768e729829e63ea0
+latest   sha256:a38679a1ad792e71e4d6cf74195671b711f82c95ec8d4687768e729829e63ea0
+
+latest -> 1.1.0: same digest
+1.0.0 still available: sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013

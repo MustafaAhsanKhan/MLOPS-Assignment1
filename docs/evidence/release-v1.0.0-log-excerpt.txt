@@ -1,0 +1,4 @@
+1.0.0: digest: sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013 size: 2198
+95c63a7: digest: sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013 size: 2198
+Published ghcr.io/mustafaahsankhan/student-ml-api:1.0.0@sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013
+latest: digest: sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013 size: 2198

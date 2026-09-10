@@ -1,0 +1,10 @@
+
+✓ v1.0.0 Release · 34459346321
+Triggered via push less than a minute ago
+
+JOBS
+✓ Run Tests in 14s (ID 102813189215)
+✓ Build and Push Image in 29s (ID 102813273258)
+
+For more information about a job, try: gh run view --job=<job-id>
+View this run on GitHub: https://github.com/MustafaAhsanKhan/student-ml-api/actions/runs/34459346321

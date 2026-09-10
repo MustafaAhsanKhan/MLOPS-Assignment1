@@ -1,0 +1,7 @@
+Unit Tests	Run unit tests	2026-09-10T09:08:10.1753808Z tests/test_app.py::test_health FAILED                                    [  6%]
+Unit Tests	Run unit tests	2026-09-10T09:08:10.2103192Z         assert response.status_code == 200
+Unit Tests	Run unit tests	2026-09-10T09:08:10.2103676Z >       assert data["status"] == "wrong"
+Unit Tests	Run unit tests	2026-09-10T09:08:10.2104396Z E       AssertionError: assert 'healthy' == 'wrong'
+Unit Tests	Run unit tests	2026-09-10T09:08:10.2105933Z tests/test_app.py:22: AssertionError
+Unit Tests	Run unit tests	2026-09-10T09:08:10.2107658Z FAILED tests/test_app.py::test_health - AssertionError: assert 'healthy' == 'wrong'
+Unit Tests	Run unit tests	2026-09-10T09:08:10.2109401Z ========================= 1 failed, 14 passed in 0.18s =========================

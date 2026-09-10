@@ -1,0 +1,48 @@
+$ docker images | grep -E 'REPOSITORY|student-ml-api'
+student-ml-api:1.0.0                         28a037f6b401        223MB         48.8MB   U    
+student-ml-api:1.1.0-local                   053f1f9b8e4f        223MB         48.8MB        
+
+$ docker ps --filter name=student-ml-api
+CONTAINER ID   IMAGE                  COMMAND                  CREATED         STATUS        PORTS                                         NAMES
+d4cca86ee975   student-ml-api:1.0.0   "gunicorn --bind 0.0…"   2 seconds ago   Up 1 second   0.0.0.0:5001->5000/tcp, [::]:5001->5000/tcp   student-ml-api
+
+$ docker logs student-ml-api
+[2026-09-10 09:18:58 +0000] [1] [INFO] Starting gunicorn 26.2.0
+[2026-09-10 09:18:58 +0000] [1] [INFO] Listening at: http://0.0.0.0:5000 (1)
+[2026-09-10 09:18:58 +0000] [1] [INFO] Using worker: sync
+[2026-09-10 09:18:58 +0000] [7] [INFO] Booting worker with pid: 7
+[2026-09-10 09:18:58 +0000] [8] [INFO] Booting worker with pid: 8
+[2026-09-10 09:18:58 +0000] [1] [ERROR] Control server error: [Errno 13] Permission denied: '/home/appuser'
+172.17.0.1 - - [10/Sep/2026:09:18:59 +0000] "GET /health HTTP/1.1" 200 70 "-" "curl/8.7.1"
+172.17.0.1 - - [10/Sep/2026:09:18:59 +0000] "GET /health HTTP/1.1" 200 70 "-" "curl/8.7.1"
+172.17.0.1 - - [10/Sep/2026:09:18:59 +0000] "POST /predict HTTP/1.1" 200 29 "-" "curl/8.7.1"
+
+$ script -q /dev/null docker exec -it student-ml-api sh -c 'pwd; whoami; ls -la' | tr -d '\r'
+/app
+appuser
+total 20
+drwxr-xr-x 1 root root 4096 Sep 10 09:03 .
+drwxr-xr-x 1 root root 4096 Sep 10 09:18 ..
+-rw-r--r-- 1 root root    6 Sep 10 09:02 VERSION
+-rw-r--r-- 1 root root 1307 Sep 10 09:03 app.py
+-rw-r--r-- 1 root root   30 Sep 10 09:03 requirements.txt
+
+# Values identified with docker inspect (full output in part11-docker-inspect-full.json)
+$ docker inspect -f 'Container ID:      {{.Id}}' student-ml-api
+Container ID:      d4cca86ee9755c20b92a7f2be18ec726379af74a39e93c0bce0df565149ee8c1
+
+$ docker inspect -f 'Image ID:          {{.Image}}' student-ml-api
+Image ID:          sha256:28a037f6b401de895139cb3c7f085d5ef193c810f3bd09c406e406ada7435c92
+
+$ docker inspect -f 'Exposed port:      {{json .Config.ExposedPorts}}  published as {{json .NetworkSettings.Ports}}' student-ml-api
+Exposed port:      {"5000/tcp":{}}  published as {"5000/tcp":[{"HostIp":"0.0.0.0","HostPort":"5001"},{"HostIp":"::","HostPort":"5001"}]}
+
+$ docker inspect -f 'Running command:   {{.Path}} {{join .Args " "}}' student-ml-api
+Running command:   gunicorn --bind 0.0.0.0:5000 --workers 2 --access-logfile - app:app
+
+$ docker inspect -f 'Working directory: {{.Config.WorkingDir}}' student-ml-api
+Working directory: /app
+
+$ docker inspect -f 'Runs as user:      {{.Config.User}}' student-ml-api
+Runs as user:      appuser
+

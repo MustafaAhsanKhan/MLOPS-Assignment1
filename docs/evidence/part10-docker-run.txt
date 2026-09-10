@@ -1,0 +1,9 @@
+$ docker run -d --name student-ml-api -p 5001:5000 student-ml-api:1.0.0
+d4cca86ee9755c20b92a7f2be18ec726379af74a39e93c0bce0df565149ee8c1
+
+$ curl -s http://localhost:5001/health
+{"status":"healthy","application":"student-ml-api","version":"1.0.0"}
+
+$ curl -s -X POST http://localhost:5001/predict -H 'Content-Type: application/json' -d '{"value": 10}'
+{"input":10,"prediction":20}
+

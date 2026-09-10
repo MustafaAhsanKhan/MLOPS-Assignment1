@@ -1,0 +1,15 @@
+$ lsof -nP -iTCP:5000 -sTCP:LISTEN
+COMMAND   PID    USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+ControlCe 621 mustafa   11u  IPv4 0xb21bd552a09e2686      0t0  TCP *:5000 (LISTEN)
+ControlCe 621 mustafa   12u  IPv6 0x968c939d01a14417      0t0  TCP *:5000 (LISTEN)
+
+$ docker ps --filter name=student-ml-api --format '{{.Names}}  {{.Ports}}'
+student-ml-api  0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp
+
+$ curl -si http://localhost:5000/health | head -5
+HTTP/1.1 403 Forbidden
+Content-Length: 0
+Server: AirTunes/950.7.1
+X-Apple-ProcessingTime: 0
+X-Apple-RequestReceivedTimestamp: 65776163
+

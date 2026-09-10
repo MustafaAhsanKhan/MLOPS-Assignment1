@@ -1,0 +1,30 @@
+*   a1aa4d3 (HEAD -> main, tag: v1.1.0, origin/main, origin/HEAD) Merge pull request #2 from MustafaAhsanKhan/feature/model-metadata
+|\  
+| *   96ed34e (origin/feature/model-metadata) Merge branch 'main' into feature/model-metadata
+| |\  
+| |/  
+|/|   
+* |   4c9e510 Merge pull request #3 from MustafaAhsanKhan/fix/gunicorn-control-socket
+|\ \  
+| * | 7ee95a2 (origin/fix/gunicorn-control-socket, fix/gunicorn-control-socket) fix: disable gunicorn control socket in container
+|/ /  
+| * db5a037 (feature/model-metadata) docs: update health response example in README
+| * 2f73e3e chore: bump version to 1.1.0
+| * 798297e test: update health endpoint test for model metadata
+| * 3edea83 feat: add application and model version metadata to /health
+|/  
+*   95c63a7 (tag: v1.0.0) Merge pull request #1 from MustafaAhsanKhan/feature/prediction-api
+|\  
+| * 7be3d89 (origin/feature/prediction-api, feature/prediction-api) fix: correct health endpoint test
+| * 62efebf test: intentionally break health status assertion to verify CI gate
+| * 3b0b34c docs: document API usage, Docker and release workflow
+| * 4da5dc1 ci: publish commit SHA image tag on release
+| * bb6a6cd build: add OCI metadata labels to the Docker image
+| * bf2c559 ci: add tag-based release workflow for GHCR
+| * 5838021 ci: add pull request CI workflow
+| * c407b90 build: add production Dockerfile and .dockerignore
+| * aa8705c test: add API unit tests
+| * 6978f44 feat: add prediction endpoint
+| * 52c1ad7 feat: add Flask app with health endpoint
+|/  
+* 6ff90ec chore: initial repository setup

@@ -1,0 +1,43 @@
+$ docker rm -f student-ml-api
+student-ml-api
+
+$ docker rmi student-ml-api:1.0.0
+Untagged: student-ml-api:1.0.0
+Deleted: sha256:28a037f6b401de895139cb3c7f085d5ef193c810f3bd09c406e406ada7435c92
+
+$ docker images | grep -E 'REPOSITORY|student-ml-api' || echo '(no student-ml-api:1.0.0 image left locally)'
+student-ml-api:1.1.0-local                   053f1f9b8e4f        223MB         48.8MB        
+
+$ docker pull --platform linux/amd64 ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+1.0.0: Pulling from mustafaahsankhan/student-ml-api
+ceae1e688139: Pulling fs layer
+d3d9fbda0237: Pulling fs layer
+3c0d43448adc: Pulling fs layer
+a27edd59c97f: Pulling fs layer
+43c6344079f9: Pulling fs layer
+ceae1e688139: Download complete
+d3d9fbda0237: Download complete
+a27edd59c97f: Download complete
+3c0d43448adc: Download complete
+3c0d43448adc: Pull complete
+d3d9fbda0237: Pull complete
+a27edd59c97f: Pull complete
+43c6344079f9: Download complete
+ceae1e688139: Pull complete
+43c6344079f9: Pull complete
+Digest: sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013
+Status: Downloaded newer image for ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+
+$ docker run -d --name student-ml-api --platform linux/amd64 -p 5001:5000 ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+a53dfffa87221da6e416e4fb2fa77d158d7cb78aa6d83e8b8ffdb3ec68e1dce3
+
+$ curl -s http://localhost:5001/health
+{"status":"healthy","application":"student-ml-api","version":"1.0.0"}
+
+$ docker image inspect -f 'Platform: {{.Os}}/{{.Architecture}}  RepoDigests: {{json .RepoDigests}}' ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+Platform: linux/amd64  RepoDigests: ["ghcr.io/mustafaahsankhan/student-ml-api@sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013"]
+
+$ docker image inspect -f '{{json .Config.Labels}}' ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+{"org.opencontainers.image.created":"2026-09-10T09:12:44Z","org.opencontainers.image.description":"Prediction API for the MLOps CI/CD exercise","org.opencontainers.image.revision":"95c63a7833fd62bba02790876f02d0ea9fa5daf0","org.opencontainers.image.source":"https://github.com/MustafaAhsanKhan/student-ml-api","org.opencontainers.image.title":"student-ml-api","org.opencontainers.image.version":"1.0.0"}
+

@@ -1,0 +1,239 @@
+[
+    {
+        "Id": "d4cca86ee9755c20b92a7f2be18ec726379af74a39e93c0bce0df565149ee8c1",
+        "Created": "2026-09-10T09:18:57.792121024Z",
+        "Path": "gunicorn",
+        "Args": [
+            "--bind",
+            "0.0.0.0:5000",
+            "--workers",
+            "2",
+            "--access-logfile",
+            "-",
+            "app:app"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 10592,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-09-10T09:18:57.85569451Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:28a037f6b401de895139cb3c7f085d5ef193c810f3bd09c406e406ada7435c92",
+        "ResolvConfPath": "/var/lib/docker/containers/d4cca86ee9755c20b92a7f2be18ec726379af74a39e93c0bce0df565149ee8c1/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/d4cca86ee9755c20b92a7f2be18ec726379af74a39e93c0bce0df565149ee8c1/hostname",
+        "HostsPath": "/var/lib/docker/containers/d4cca86ee9755c20b92a7f2be18ec726379af74a39e93c0bce0df565149ee8c1/hosts",
+        "LogPath": "/var/lib/docker/containers/d4cca86ee9755c20b92a7f2be18ec726379af74a39e93c0bce0df565149ee8c1/d4cca86ee9755c20b92a7f2be18ec726379af74a39e93c0bce0df565149ee8c1-json.log",
+        "Name": "/student-ml-api",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {
+                "5000/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "5001"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "d4cca86ee975",
+            "Domainname": "",
+            "User": "appuser",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "5000/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.13.15",
+                "PYTHON_SHA256=1e66a7945a48390ee4c2a4268a0e4185884059a13c4aab6d148aa208deea4a76",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONUNBUFFERED=1",
+                "PIP_DISABLE_PIP_VERSION_CHECK=1"
+            ],
+            "Cmd": [
+                "gunicorn",
+                "--bind",
+                "0.0.0.0:5000",
+                "--workers",
+                "2",
+                "--access-logfile",
+                "-",
+                "app:app"
+            ],
+            "Image": "student-ml-api:1.0.0",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": null,
+            "Labels": {
+                "org.opencontainers.image.created": "unknown",
+                "org.opencontainers.image.description": "Prediction API for the MLOps CI/CD exercise",
+                "org.opencontainers.image.revision": "unknown",
+                "org.opencontainers.image.source": "unknown",
+                "org.opencontainers.image.title": "student-ml-api",
+                "org.opencontainers.image.version": "dev"
+            }
+        },
+        "NetworkSettings": {
+            "SandboxID": "7a9c802d6a9876e13b771c1187a21c01bcca1c8ff8c5f03711a787ec3bf932ee",
+            "SandboxKey": "/var/run/docker/netns/7a9c802d6a98",
+            "Ports": {
+                "5000/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "5001"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "5001"
+                    }
+                ]
+            },
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "e125f7bdfdadfc271686edc9853d618d171f1fc3147a3d54d32030fc71a383d0",
+                    "EndpointID": "2f942e63c37aa09927f096c56b51fdd14a9288f6236e5ba5cc367862e96ffa80",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.4",
+                    "MacAddress": "5a:4e:52:bb:6a:fe",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:8a9d3bc94f3d1ef797eeaf3facaad6afbacaa52724ac0de9bd72263e187eb5c4",
+            "size": 1999,
+            "platform": {
+                "architecture": "arm64",
+                "os": "linux"
+            }
+        }
+    }
+]
