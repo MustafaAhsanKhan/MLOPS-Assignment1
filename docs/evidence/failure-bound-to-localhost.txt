@@ -1,0 +1,27 @@
+### Reproduce: gunicorn bound to 127.0.0.1 inside the container
+$ docker run -d --name bind-localhost -p 18001:5000 student-ml-api:failure-lab gunicorn --bind 127.0.0.1:5000 app:app
+7ca62ce1e9274c391a7dfe652af094d6eb3498f6fb7755c60afb501e7fd38347
+
+$ docker logs bind-localhost 2>&1 | grep Listening
+[2026-09-10 09:22:39 +0000] [1] [INFO] Listening at: http://127.0.0.1:5000 (1)
+
+$ curl -sS http://localhost:18001/health
+curl: (52) Empty reply from server
+
+$ docker exec bind-localhost python -c "import urllib.request; print(urllib.request.urlopen('http://127.0.0.1:5000/health').read().decode())"
+{"status":"healthy","application":"student-ml-api","version":"1.0.0"}
+
+
+### Correction: bind to 0.0.0.0 (the default CMD in the Dockerfile)
+$ docker rm -f bind-localhost
+bind-localhost
+
+$ docker run -d --name bind-localhost -p 18001:5000 student-ml-api:failure-lab
+a722989b4b45f732b951b38fd0df0179b5d2ca2ee5700575fbad10e19901026a
+
+$ docker logs bind-localhost 2>&1 | grep Listening
+[2026-09-10 09:22:43 +0000] [1] [INFO] Listening at: http://0.0.0.0:5000 (1)
+
+$ curl -s http://localhost:18001/health
+{"status":"healthy","application":"student-ml-api","version":"1.0.0"}
+

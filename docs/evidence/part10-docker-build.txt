@@ -1,0 +1,48 @@
+$ docker build --progress=plain -t student-ml-api:1.0.0 .
+#0 building with "colima" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.51kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.13.15-slim
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 159B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/python:3.13.15-slim@sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285
+#4 resolve docker.io/library/python:3.13.15-slim@sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 1.46kB done
+#5 DONE 0.0s
+
+#6 [3/6] RUN useradd --no-create-home --uid 10001 appuser
+#6 CACHED
+
+#7 [5/6] RUN pip install --no-cache-dir -r requirements.txt
+#7 CACHED
+
+#8 [4/6] COPY requirements.txt .
+#8 CACHED
+
+#9 [2/6] WORKDIR /app
+#9 CACHED
+
+#10 [6/6] COPY VERSION app.py ./
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:8a9d3bc94f3d1ef797eeaf3facaad6afbacaa52724ac0de9bd72263e187eb5c4 0.0s done
+#11 exporting config sha256:5bebe9087e5977823dd44978d85d52fe7f7196f59e6318b3974de07d64b5cdbb done
+#11 exporting attestation manifest sha256:afa08535df3672ba0a5bd15b3053556963c89bc7bfe48d28daeed528a0cb9f0f done
+#11 exporting manifest list sha256:28a037f6b401de895139cb3c7f085d5ef193c810f3bd09c406e406ada7435c92
+#11 exporting manifest list sha256:28a037f6b401de895139cb3c7f085d5ef193c810f3bd09c406e406ada7435c92 done
+#11 naming to docker.io/library/student-ml-api:1.0.0 done
+#11 unpacking to docker.io/library/student-ml-api:1.0.0 0.1s done
+#11 DONE 0.1s
+

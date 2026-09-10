@@ -1,0 +1,10 @@
+
+✓ feature/prediction-api CI MustafaAhsanKhan/student-ml-api#1 · 34459093347
+Triggered via pull_request less than a minute ago
+
+JOBS
+✓ Unit Tests in 11s (ID 102812359575)
+✓ Docker Build Validation in 16s (ID 102812429768)
+
+For more information about a job, try: gh run view --job=<job-id>
+View this run on GitHub: https://github.com/MustafaAhsanKhan/student-ml-api/actions/runs/34459093347

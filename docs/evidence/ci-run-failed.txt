@@ -1,0 +1,23 @@
+
+X feature/prediction-api CI MustafaAhsanKhan/student-ml-api#1 · 34458945901
+Triggered via pull_request less than a minute ago
+
+JOBS
+X Unit Tests in 8s (ID 102811892603)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Python
+  ✓ Install dependencies
+  X Run unit tests
+  - Post Set up Python
+  ✓ Post Checkout code
+  ✓ Complete job
+- Docker Build Validation in 0s (ID 102811945122)
+
+ANNOTATIONS
+X Process completed with exit code 1.
+Unit Tests: .github#59
+
+
+To see what failed, try: gh run view 34458945901 --log-failed
+View this run on GitHub: https://github.com/MustafaAhsanKhan/student-ml-api/actions/runs/34458945901

@@ -1,0 +1,75 @@
+### 1. Deploy 1.1.0 from the registry
+$ docker pull --platform linux/amd64 ghcr.io/mustafaahsankhan/student-ml-api:1.1.0
+1.1.0: Pulling from mustafaahsankhan/student-ml-api
+a38ece9f23f9: Pulling fs layer
+28c1a3f50ad9: Pulling fs layer
+645645653a19: Pulling fs layer
+7808e23989e3: Pulling fs layer
+c883dd191b5f: Pulling fs layer
+a38ece9f23f9: Download complete
+c883dd191b5f: Download complete
+7808e23989e3: Download complete
+645645653a19: Download complete
+a38ece9f23f9: Pull complete
+7808e23989e3: Pull complete
+645645653a19: Pull complete
+28c1a3f50ad9: Download complete
+c883dd191b5f: Pull complete
+28c1a3f50ad9: Pull complete
+Digest: sha256:a38679a1ad792e71e4d6cf74195671b711f82c95ec8d4687768e729829e63ea0
+Status: Downloaded newer image for ghcr.io/mustafaahsankhan/student-ml-api:1.1.0
+ghcr.io/mustafaahsankhan/student-ml-api:1.1.0
+
+$ docker run -d --name student-ml-api --platform linux/amd64 -p 5001:5000 ghcr.io/mustafaahsankhan/student-ml-api:1.1.0
+a464af3afcd4656ed8056e09efc23a8c6ba1ecd849f9b618c7a9561ca6a1ca63
+
+$ curl -s http://localhost:5001/health
+{"status":"healthy","application":"student-ml-api","application_version":"1.1.0","model_version":"model-1"}
+
+$ docker logs student-ml-api
+[2026-09-10 09:30:29 +0000] [1] [INFO] Starting gunicorn 26.2.0
+[2026-09-10 09:30:29 +0000] [1] [INFO] Listening at: http://0.0.0.0:5000 (1)
+[2026-09-10 09:30:29 +0000] [1] [INFO] Using worker: sync
+[2026-09-10 09:30:29 +0000] [8] [INFO] Booting worker with pid: 8
+[2026-09-10 09:30:29 +0000] [10] [INFO] Booting worker with pid: 10
+172.17.0.1 - - [10/Sep/2026:09:30:29 +0000] "GET /health HTTP/1.1" 200 108 "-" "curl/8.7.1"
+172.17.0.1 - - [10/Sep/2026:09:30:29 +0000] "GET /health HTTP/1.1" 200 108 "-" "curl/8.7.1"
+
+### 2. Assume 1.1.0 has a production issue: restore 1.0.0 from the registry (no code change, no rebuild)
+$ docker rm -f student-ml-api
+student-ml-api
+
+$ docker image rm ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+Untagged: ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+Deleted: sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013
+
+$ docker pull --platform linux/amd64 ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+1.0.0: Pulling from mustafaahsankhan/student-ml-api
+a27edd59c97f: Pulling fs layer
+ceae1e688139: Pulling fs layer
+d3d9fbda0237: Pulling fs layer
+43c6344079f9: Pulling fs layer
+3c0d43448adc: Pulling fs layer
+a27edd59c97f: Download complete
+3c0d43448adc: Download complete
+3c0d43448adc: Pull complete
+ceae1e688139: Download complete
+d3d9fbda0237: Download complete
+a27edd59c97f: Pull complete
+d3d9fbda0237: Pull complete
+43c6344079f9: Download complete
+43c6344079f9: Pull complete
+ceae1e688139: Pull complete
+Digest: sha256:cdaa960e36bce8b0cab3cc815b1d452df89e8caa03aae8d38301c5730aa96013
+Status: Downloaded newer image for ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+
+$ docker run -d --name student-ml-api --platform linux/amd64 -p 5001:5000 ghcr.io/mustafaahsankhan/student-ml-api:1.0.0
+f58429e93dd0a319852abf7a24b5834ae6490f246dc049ad728ce2c0ff60405e
+
+$ curl -s http://localhost:5001/health
+{"status":"healthy","application":"student-ml-api","version":"1.0.0"}
+
+$ docker ps --filter name=student-ml-api --format '{{.Names}}  {{.Image}}  {{.Status}}  {{.Ports}}'
+student-ml-api  ghcr.io/mustafaahsankhan/student-ml-api:1.0.0  Up 2 seconds  0.0.0.0:5001->5000/tcp, [::]:5001->5000/tcp
+

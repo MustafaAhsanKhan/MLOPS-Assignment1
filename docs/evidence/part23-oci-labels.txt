@@ -1,0 +1,16 @@
+$ docker inspect -f '{{json .Config.Labels}}' ghcr.io/mustafaahsankhan/student-ml-api:1.1.0 | python3 -m json.tool
+{
+    "org.opencontainers.image.created": "2026-09-10T09:28:09Z",
+    "org.opencontainers.image.description": "Prediction API for the MLOps CI/CD exercise",
+    "org.opencontainers.image.revision": "a1aa4d3679f1464dd39db61bd821d1917b2cb31a",
+    "org.opencontainers.image.source": "https://github.com/MustafaAhsanKhan/student-ml-api",
+    "org.opencontainers.image.title": "student-ml-api",
+    "org.opencontainers.image.version": "1.1.0"
+}
+
+$ docker inspect -f '{{index .Config.Labels "org.opencontainers.image.revision"}}' ghcr.io/mustafaahsankhan/student-ml-api:1.1.0
+a1aa4d3679f1464dd39db61bd821d1917b2cb31a
+
+$ git rev-parse 'v1.1.0^{commit}'
+a1aa4d3679f1464dd39db61bd821d1917b2cb31a
+

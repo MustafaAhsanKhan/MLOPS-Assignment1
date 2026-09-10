@@ -1,0 +1,24 @@
+Pull Request:     #2  feature/model-metadata -> main  (https://github.com/MustafaAhsanKhan/student-ml-api/pull/2)
+Merge commit:     a1aa4d3679f1464dd39db61bd821d1917b2cb31a
+Git tag:          v1.1.0 -> a1aa4d3679f1464dd39db61bd821d1917b2cb31a
+Release run:      https://github.com/MustafaAhsanKhan/student-ml-api/actions/runs/34460769060
+Docker image:     ghcr.io/mustafaahsankhan/student-ml-api:1.1.0   (also :latest and :a1aa4d3)
+Image digest:     sha256:a38679a1ad792e71e4d6cf74195671b711f82c95ec8d4687768e729829e63ea0
+$ gh pr view 2 --json number,title,headRefName,mergedAt,mergeCommit
+{"headRefName":"feature/model-metadata","mergeCommit":{"oid":"a1aa4d3679f1464dd39db61bd821d1917b2cb31a"},"mergedAt":"2026-09-10T09:27:41Z","number":2,"title":"feat: add model metadata to health endpoint (v1.1.0)"}
+
+$ git show --no-patch v1.1.0
+tag v1.1.0
+Tagger: MustafaAhsanKhan <mustafaahsankhan2006@gmail.com>
+Date:   Thu Sep 10 14:27:45 2026 +0500
+
+Release v1.1.0
+
+commit a1aa4d3679f1464dd39db61bd821d1917b2cb31a
+Merge: 4c9e510 96ed34e
+Author: Mustafa Ahsan <143963485+MustafaAhsanKhan@users.noreply.github.com>
+Date:   Thu Sep 10 14:27:41 2026 +0500
+
+    Merge pull request #2 from MustafaAhsanKhan/feature/model-metadata
+    
+    feat: add model metadata to health endpoint (v1.1.0)

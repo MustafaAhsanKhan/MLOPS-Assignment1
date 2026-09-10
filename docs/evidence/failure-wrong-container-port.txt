@@ -1,0 +1,28 @@
+### Reproduce: host port mapped to container port 8000, but the app listens on 5000
+$ docker run -d --name wrong-port -p 5004:8000 student-ml-api:failure-lab
+260f80d7d95956fcd108a47a2bd2d548a1e08b51df71b27ca8b70be83c028b8a
+
+$ docker port wrong-port
+8000/tcp -> 0.0.0.0:5004
+8000/tcp -> [::]:5004
+
+$ docker logs wrong-port 2>&1 | grep Listening
+[2026-09-10 09:20:10 +0000] [1] [INFO] Listening at: http://0.0.0.0:5000 (1)
+
+$ curl -sS http://localhost:5004/health
+curl: (52) Empty reply from server
+
+### Correction: map to the port the app actually listens on (EXPOSE 5000)
+$ docker rm -f wrong-port
+wrong-port
+
+$ docker run -d --name wrong-port -p 5004:5000 student-ml-api:failure-lab
+bf423091c382be1a4329b740fee080d6bcc416c7e83d91e96a66c900d5221e97
+
+$ docker port wrong-port
+5000/tcp -> 0.0.0.0:5004
+5000/tcp -> [::]:5004
+
+$ curl -s http://localhost:5004/health
+{"status":"healthy","application":"student-ml-api","version":"1.0.0"}
+
