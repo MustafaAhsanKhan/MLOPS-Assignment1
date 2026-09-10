@@ -16,12 +16,14 @@ def client():
 
 def test_health(client):
     response = client.get("/health")
-    data = response.get_json()
 
     assert response.status_code == 200
-    assert data["status"] == "healthy"
-    assert data["application"] == "student-ml-api"
-    assert data["version"] == EXPECTED_VERSION
+    assert response.get_json() == {
+        "status": "healthy",
+        "application": "student-ml-api",
+        "application_version": EXPECTED_VERSION,
+        "model_version": "model-1",
+    }
 
 
 @pytest.mark.parametrize("value, expected", [(10, 20), (0, 0), (-3, -6), (2.5, 5.0)])

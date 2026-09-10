@@ -7,12 +7,12 @@ feature branches, pull requests, GitHub Actions CI, Docker and GHCR releases.
 
 | Method | Path | Description |
 | --- | --- | --- |
-| GET | `/health` | Service health and application version |
+| GET | `/health` | Service health, application version and model version |
 | POST | `/predict` | Returns a prediction for `{"value": <number>}` |
 
 ```bash
 curl http://localhost:5000/health
-# {"status":"healthy","application":"student-ml-api","version":"1.0.0"}
+# {"status":"healthy","application":"student-ml-api","application_version":"1.1.0","model_version":"model-1"}
 
 curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d '{"value": 10}'
 # {"input":10,"prediction":20}

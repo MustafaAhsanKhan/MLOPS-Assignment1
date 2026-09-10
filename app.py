@@ -11,6 +11,10 @@ app = Flask(__name__)
 app.json.sort_keys = False  # keep response fields in the documented order
 
 
+# Versioned separately from the application: the model can change without an API change
+MODEL_VERSION = "model-1"
+
+
 def predict_value(value):
     # Placeholder model: this project is about the delivery workflow, not model quality
     return value * 2
@@ -18,7 +22,12 @@ def predict_value(value):
 
 @app.get("/health")
 def health():
-    return jsonify(status="healthy", application=APP_NAME, version=APP_VERSION)
+    return jsonify(
+        status="healthy",
+        application=APP_NAME,
+        application_version=APP_VERSION,
+        model_version=MODEL_VERSION,
+    )
 
 
 @app.post("/predict")
