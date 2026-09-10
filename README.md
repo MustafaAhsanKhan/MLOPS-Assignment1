@@ -36,7 +36,14 @@ docker build -t student-ml-api:1.0.0 .
 docker run -d --name student-ml-api -p 5000:5000 student-ml-api:1.0.0
 ```
 
-Released images are published to `ghcr.io/mustafaahsankhan/student-ml-api`.
+Released images are published to `ghcr.io/mustafaahsankhan/student-ml-api` with the tags `X.Y.Z`, `latest` and the short commit SHA:
+
+```bash
+docker pull ghcr.io/mustafaahsankhan/student-ml-api:1.1.0
+docker run -d --name student-ml-api -p 5000:5000 ghcr.io/mustafaahsankhan/student-ml-api:1.1.0
+```
+
+Release images are built on GitHub's amd64 runners, so add `--platform linux/amd64` on Apple Silicon. On macOS, port 5000 may already be taken by AirPlay Receiver; use another host port (e.g. `-p 5001:5000`) if so.
 
 ## Workflow
 
@@ -50,3 +57,7 @@ git checkout main && git pull
 git tag -a v1.0.0 -m "Release v1.0.0"
 git push origin v1.0.0
 ```
+
+## Assignment report
+
+The full write-up with evidence (CI runs, releases, registry digests, rollback, traceability and failure analysis) is in [docs/REPORT.md](docs/REPORT.md).
