@@ -60,4 +60,4 @@ git push origin v1.0.0
 
 ## Assignment report
 
-The full write-up with evidence (CI runs, releases, registry digests, rollback, traceability and failure analysis) is in [docs/REPORT.md](docs/REPORT.md).
+The full write-up with evidence (CI runs, releases, registry digests, rollback, traceability and failure analysis) is in [docs/i230549_Assignment1_Report.md](docs/i230549_Assignment1_Report.md).
