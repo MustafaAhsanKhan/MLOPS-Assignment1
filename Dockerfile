@@ -35,5 +35,6 @@ USER appuser
 
 EXPOSE 5000
 
-# Bind to 0.0.0.0 so the published port is reachable from outside the container
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--access-logfile", "-", "app:app"]
+# Bind to 0.0.0.0 so the published port is reachable from outside the container.
+# Control socket disabled: Docker manages the process lifecycle and appuser has no home directory.
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--access-logfile", "-", "--no-control-socket", "app:app"]
