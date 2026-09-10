@@ -4,7 +4,6 @@
 - **Repository:** https://github.com/MustafaAhsanKhan/student-ml-api
 - **Registry:** `ghcr.io/mustafaahsankhan/student-ml-api` (GitHub Container Registry, public)
 
-Every value in this report (PR numbers, commit SHAs, run IDs, digests) comes from this repository. Raw command output and screenshots are in [`docs/evidence/`](evidence/).
 
 ## Quick reference
 
